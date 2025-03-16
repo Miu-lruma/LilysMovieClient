@@ -127,7 +127,7 @@ function MovieFun()
         // Fetch links for all actors in the cast
         await Promise.all(film.cast.map(async (actor) =>
         {
-            fetchLinks(getLinksUrl + "?actorId=" + actor.id + '?movieId=' + film.id);
+            fetchLinks(getLinksUrl + "?actorId=" + actor.id + '&movieId=' + film.id);
         }));
 
         window.scrollTo(0, 0);
@@ -174,7 +174,7 @@ function MovieFun()
         // Fetch links for all actors in the cast
         await Promise.all(actor.movies.map(async (movie) =>
         {
-            fetchLinks(getMovieUrl + "?movieId=" + movie.id + '?actorId=' + actor.id);
+            fetchLinks(getMovieUrl + "?movieId=" + movie.id + '&actorId=' + actor.id);
         }));
 
         window.scrollTo(0, 0);

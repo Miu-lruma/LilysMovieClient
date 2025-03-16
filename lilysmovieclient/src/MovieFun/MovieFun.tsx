@@ -124,11 +124,17 @@ function MovieFun()
             setActors([...film.cast]);
         };
 
-        // Fetch links for all actors in the cast
-        await Promise.all(film.cast.map(async (actor) =>
+        let delay = 0; const delayIncrement = 1000;
+
+        const promises = film.cast.map(async (actor) =>
         {
-            fetchLinks(getLinksUrl + "?actorId=" + actor.id + '&movieId=' + film.id);
-        }));
+            delay += delayIncrement;
+            return new Promise(resolve => setTimeout(resolve, delay)).then(() =>
+                fetchLinks(getLinksUrl + "?actorId=" + actor.id + '&movieId=' + film.id));
+        });
+
+        // Fetch links for all actors in the cast
+        await Promise.all(promises);
 
         window.scrollTo(0, 0);
     }
@@ -171,11 +177,17 @@ function MovieFun()
             setFilms([...actor.movies]);
         };
 
-        // Fetch links for all actors in the cast
-        await Promise.all(actor.movies.map(async (movie) =>
+        let delay = 0; const delayIncrement = 1000;
+
+        const promises = actor.movies.map(async (movie) =>
         {
-            fetchLinks(getMovieUrl + "?movieId=" + movie.id + '&actorId=' + actor.id);
-        }));
+            delay += delayIncrement;
+            return new Promise(resolve => setTimeout(resolve, delay)).then(() =>
+                fetchLinks(getMovieUrl + "?movieId=" + movie.id + '&actorId=' + actor.id));
+        });
+
+        // Fetch links for all actors in the cast
+        await Promise.all(promises);
 
         window.scrollTo(0, 0);
     }

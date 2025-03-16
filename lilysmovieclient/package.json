@@ -13,7 +13,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "rc-select": "^14.16.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

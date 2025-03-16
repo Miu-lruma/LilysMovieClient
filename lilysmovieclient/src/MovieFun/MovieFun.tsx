@@ -124,7 +124,7 @@ function MovieFun()
             setActors([...film.cast]);
         };
 
-        let delay = 0; const delayIncrement = 300;
+        let delay = 0; const delayIncrement = 500;
 
         const promises = film.cast.map(async (actor) =>
         {
@@ -177,7 +177,7 @@ function MovieFun()
             setFilms([...actor.movies]);
         };
 
-        let delay = 0; const delayIncrement = 300;
+        let delay = 0; const delayIncrement = 500;
 
         const promises = actor.movies.map(async (movie) =>
         {
